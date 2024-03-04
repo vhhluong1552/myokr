@@ -1,28 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>The generated source code Web Application for Sakai</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Thông Tin Thanh Toán và Đặt Hàng</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 50%;
+        }
+
+        .btn-success {
+            width: 100%;
+        }
+
+        label {
+            text-align: left;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
 
-    <div th:replace="~{fragments/header :: header}">Header</div>
-    <div class="container">
-        <div class="text-center">
-            <div class="lead">
-                <H1>Refer document at http://www.thymeleaf.org/doc/articles/layouts.html to make your own layout.</H1>
-            </div>
-            <div class="lead">Welcome to the generated source code Web Application for Sakai.</div>
-			<p>Login userId: <span th:text="${session.userDisplayName}"></span></p>
-			<p>Login Display Username: <span th:text="${session.userEid}"></span></p>
-            <p>
-                <a id="signup" class="btn btn-success btn-lg">Sign up</a>
-            </p>
+<div th:replace="~{fragments/header :: header}">Header</div>
+<div class="container">
+    <div class="text-center">
+        <div class="lead">
+            <H1>Chào Mừng Bạn Đến Với Trang Thanh Toán</H1>
         </div>
-        <div th:insert="~{fragments/footer :: footer}">&copy; 2017 The MKS Group</div>
+      
+        <p>
+
+        <!-- Thêm phần thông tin thanh toán và đặt hàng vào đây -->
+        <form action="/checkout" method="post">
+            <h2>Thông Tin Thanh Toán</h2>
+            <div class="form-group">
+                <label for="name">Tên:</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="address">Địa chỉ:</label>
+                <input type="text"class="form-control" id="address" name="address">
+            </div>   
+                
+            <h2>Thông Tin Đặt Hàng</h2>
+            <div class="form-group">
+                <label for="product">Sản phẩm:</label>
+                <input type="text" class="form-control" id="product" name="product">
+            </div>
+            <div class="form-group">
+                <label for="quantity">Số lượng:</label>
+                <input type="number" class="form-control" id="quantity" name="quantity">
+            </div>
+            <div class="form-group">
+                <label for="total">Tổng cộng:</label>
+                <input type="text" class="form-control" id="total" name="total">
+            </div>
+            <button type="submit" class="btn btn-success">Đặt Hàng</button>
+        </form>
+        <!-- Kết thúc phần thông tin thanh toán và đặt hàng -->
     </div>
+    <div th:insert="~{fragments/footer :: footer}">&copy; 2017 The MKS Group</div>
+</div>
 
 </body>
 </html>
